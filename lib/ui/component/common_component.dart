@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:rio_clone/ui/component/mouseHoverDetectableText.dart';
@@ -9,7 +11,62 @@ class CommonComponent {
   ) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('RIO clone'),
+        backgroundColor: Color(0xFF0E1217),
+        title: Row(
+          children: [
+            Expanded(
+              child: Row(
+                children: [
+                  ConstrainedBox(
+                    constraints: BoxConstraints(
+                      maxHeight: 30,
+                      maxWidth: 30,
+                    ),
+                    child: Image.asset('images/rio_logo.jpg'),
+                  ),
+                  Text(
+                    'Run It Once',
+                    style: TextStyle(
+                      fontSize: 14,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  )
+                ],
+              ),
+            ),
+            Row(
+              children: [
+                Text(
+                  'Go to Run It Once Poker',
+                  style: TextStyle(
+                    fontSize: 14,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                Text(
+                  'LOG IN',
+                  style: TextStyle(
+                    fontSize: 14,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                ElevatedButton(
+                  child: const Text('Button'),
+                  style: ElevatedButton.styleFrom(
+                    textStyle: TextStyle(
+                      fontSize: 14,
+                      fontWeight: FontWeight.bold,
+                    ),
+                    primary: Colors.red,
+                    onPrimary: Colors.white,
+                    shape: const StadiumBorder(),
+                  ),
+                  onPressed: () {},
+                ),
+              ],
+            )
+          ],
+        ),
       ),
       body: body,
     );
