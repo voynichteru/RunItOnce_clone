@@ -9,6 +9,33 @@ class CommonComponent {
     BuildContext context,
     Widget body,
   ) {
+    final drawerMenus = [
+      [
+        'Pro Tools',
+        'Pro Videos',
+        'Courses+',
+        'Vision',
+        'Learning Paths',
+      ],
+      [
+        'Forums',
+        'No Limit Hold\'em+',
+        'Pot Limit Omaha+',
+        'Multi-Table Tournaments+',
+        'Other+',
+        'Chatter+',
+        'Courses+',
+      ],
+      [
+        'More',
+        'Group Coaching',
+        'Books',
+        'Monthly Elite Calls',
+        'Run It Once Poker',
+      ]
+    ];
+
+    final size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Color(0xFF0E1217),
@@ -31,88 +58,124 @@ class CommonComponent {
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  SizedBox(
-                    height: 30,
-                    width: 50,
-                    child: VerticalDivider(
-                      thickness: 1,
+                  if (size.width > 845) ...[
+                    if (size.width > 1030) ...[
+                      SizedBox(
+                        height: 30,
+                        width: 50,
+                        child: VerticalDivider(
+                          thickness: 1,
+                          width: 50,
+                          color: Colors.grey,
+                        ),
+                      ),
+                      Text(
+                        'Training',
+                        style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ],
+                    SizedBox(width: size.width <= 1030 ? 50 : 66),
+                    () {
+                      if (size.width >= 1095 ||
+                          (size.width <= 1030 && size.width >= 910)) {
+                        return Text(
+                          'Pro Videos',
+                          style: TextStyle(
+                            color: Colors.grey,
+                            fontSize: 16,
+                          ),
+                        );
+                      } else /* if (size.width< 1095 && size.width > 1030) */ {
+                        return Text(
+                          'Pro\nVideos',
+                          style: TextStyle(
+                            color: Colors.grey,
+                            fontSize: 16,
+                          ),
+                        );
+                      }
+                    }(),
+                    SizedBox(width: size.width < 960 ? 10 : 20),
+                    Text(
+                      'Courses',
+                      style: TextStyle(
+                        color: Colors.grey,
+                        fontSize: 16,
+                      ),
+                    ),
+                    SizedBox(width: size.width < 960 ? 10 : 20),
+                    Text(
+                      'Vision',
+                      style: TextStyle(
+                        color: Colors.grey,
+                        fontSize: 16,
+                      ),
+                    ),
+                    SizedBox(
+                      height: 30,
                       width: 50,
-                      color: Colors.grey,
+                      child: VerticalDivider(
+                        thickness: 1,
+                        width: size.width < 960 ? 30 : 50,
+                        color: Colors.grey,
+                      ),
                     ),
-                  ),
-                  Text(
-                    'Training',
-                    style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
+                    Text(
+                      'Forums',
+                      style: TextStyle(
+                        color: Colors.grey,
+                        fontSize: 16,
+                      ),
                     ),
-                  ),
-                  const SizedBox(width: 66),
-                  Text(
-                    'Pro Videos',
-                    style: TextStyle(
-                      color: Colors.grey,
-                      fontSize: 16,
+                    SizedBox(width: size.width < 960 ? 10 : 20),
+                    Text(
+                      'More',
+                      style: TextStyle(
+                        color: Colors.grey,
+                        fontSize: 16,
+                      ),
                     ),
-                  ),
-                  const SizedBox(width: 20),
-                  Text(
-                    'Courses',
-                    style: TextStyle(
-                      color: Colors.grey,
-                      fontSize: 16,
-                    ),
-                  ),
-                  const SizedBox(width: 20),
-                  Text(
-                    'Vision',
-                    style: TextStyle(
-                      color: Colors.grey,
-                      fontSize: 16,
-                    ),
-                  ),
-                  SizedBox(
-                    height: 30,
-                    width: 50,
-                    child: VerticalDivider(
-                      thickness: 1,
-                      width: 50,
-                      color: Colors.grey,
-                    ),
-                  ),
-                  Text(
-                    'Forums',
-                    style: TextStyle(
-                      color: Colors.grey,
-                      fontSize: 16,
-                    ),
-                  ),
-                  const SizedBox(width: 20),
-                  Text(
-                    'More',
-                    style: TextStyle(
-                      color: Colors.grey,
-                      fontSize: 16,
-                    ),
-                  ),
+                  ],
                 ],
               ),
             ),
             Row(
               children: [
-                MouseHoverDetectableText(
-                  'Go to Run It Once Poker',
-                  OnEnterMode.textColor,
+                if (size.width > 845)
+                  () {
+                    if (size.width >= 1095 ||
+                        (size.width <= 1030 && size.width >= 910)) {
+                      return MouseHoverDetectableText(
+                        text: 'Go to Run It Once Poker',
+                        mode: OnEnterMode.textColor,
+                        defaultFontSize: 14,
+                      );
+                    } else /* if (size.width< 1095 && size.width > 1030) */ {
+                      return MouseHoverDetectableText(
+                        text: 'Go to Run It Once\nPoker',
+                        mode: OnEnterMode.textColor,
+                        defaultFontSize: 14,
+                      );
+                    }
+                  }(),
+                /* MouseHoverDetectableText(
+                  text: size.width < 1095 && size.width > 1030
+                      ? 'Go to Run It Once\nPoker'
+                      : 'Go to Run It Once Poker',
+                  mode: OnEnterMode.textColor,
                   defaultFontSize: 14,
-                ),
-                const SizedBox(width: 20),
+                ), */
+                SizedBox(width: size.width < 960 ? 10 : 20),
                 MouseHoverDetectableText(
-                  'LOG IN',
-                  OnEnterMode.textColor,
+                  text: 'LOG IN',
+                  mode: OnEnterMode.textColor,
                   defaultFontSize: 14,
                   defaultFontWeight: FontWeight.bold,
                 ),
-                const SizedBox(width: 20),
+                SizedBox(width: size.width < 960 ? 10 : 20),
                 ElevatedButton(
                   child: const Text('  SIGN UP FREE  '),
                   style: ElevatedButton.styleFrom(
@@ -132,6 +195,127 @@ class CommonComponent {
         ),
       ),
       body: body,
+      drawer: size.width <= 845
+          ? SizedBox(
+              width: size.width,
+              child: Drawer(
+                child: Stack(
+                  children: [
+                    ColoredBox(
+                      color: Color(0xFF0E1217),
+                      child: ListView(
+                        children: [
+                          SizedBox(
+                            height: 66,
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Padding(
+                                  padding: EdgeInsets.only(left: 32),
+                                  child: Row(
+                                    children: [
+                                      ConstrainedBox(
+                                        constraints: BoxConstraints(
+                                          maxHeight: 30,
+                                          maxWidth: 30,
+                                        ),
+                                        child: Image.asset(
+                                            'images/rio_logo_red.png'),
+                                      ),
+                                      const SizedBox(width: 10),
+                                      Text(
+                                        'Run It Once',
+                                        style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                IconButton(
+                                  onPressed: () => Navigator.pop(context),
+                                  icon: const Icon(
+                                    Icons.close,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          ...drawerMenus.map((menu) {
+                            return Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                ...menu.map(
+                                  (item) {
+                                    if (menu.indexOf(item) != 0) {
+                                      if (item.endsWith('+')) {
+                                        return Padding(
+                                          padding:
+                                              EdgeInsets.fromLTRB(32, 7, 32, 7),
+                                          child: Row(
+                                            children: [
+                                              Text(
+                                                item.substring(
+                                                    0, item.length - 1),
+                                                style: TextStyle(
+                                                  color: Colors.white,
+                                                  fontSize: 16,
+                                                  fontWeight: FontWeight.bold,
+                                                ),
+                                              ),
+                                              const Icon(
+                                                Icons.add,
+                                                size: 16,
+                                                color: Colors.grey,
+                                              ),
+                                            ],
+                                          ),
+                                        );
+                                      } else {
+                                        return Padding(
+                                          padding:
+                                              EdgeInsets.fromLTRB(32, 7, 32, 7),
+                                          child: Text(
+                                            item,
+                                            style: TextStyle(
+                                              color: Colors.white,
+                                              fontSize: 16,
+                                              fontWeight: FontWeight.bold,
+                                            ),
+                                          ),
+                                        );
+                                      }
+                                    } else {
+                                      return Padding(
+                                        padding:
+                                            EdgeInsets.fromLTRB(32, 7, 32, 7),
+                                        child: Text(
+                                          item,
+                                          style: TextStyle(
+                                            color: Colors.grey,
+                                            fontSize: 13,
+                                          ),
+                                        ),
+                                      );
+                                    }
+                                  },
+                                ),
+                                const SizedBox(height: 20),
+                              ],
+                            );
+                          }).toList(),
+                          const SizedBox(height: 150),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            )
+          : null,
     );
   }
 
@@ -164,159 +348,46 @@ class CommonComponent {
       child: Column(
         children: [
           SizedBox(height: size.width > 700 ? 66 : 20),
-          size.width > 700
-              ? ConstrainedBox(
-                  constraints: BoxConstraints(
-                    maxHeight: 178,
-                    maxWidth: double.infinity,
-                  ),
-                  child: Row(
-                    children: [
-                      Expanded(
-                        flex: 5,
-                        child: Row(
-                          children: [
-                            const SizedBox(width: 50),
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: const [
-                                const SelectableText(
-                                  'Run It Once',
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 17,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                                const Text(
-                                  '2021 Runt It Once. All rights reserved.',
-                                  style: TextStyle(
-                                    color: Colors.grey,
-                                    fontSize: 11.5,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
-                      ),
-                      ConstrainedBox(
-                        constraints: BoxConstraints(
-                          maxHeight: 178,
-                          maxWidth: 142,
-                        ),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            const SelectableText(
-                              'About',
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 14,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                            const SizedBox(height: 24),
-                            ...about
-                                .map(
-                                  (text) => MouseHoverDetectableText(
-                                    text,
-                                    OnEnterMode.underline,
-                                  ),
-                                )
-                                .toList(),
-                            const SizedBox(width: double.infinity),
-                          ],
-                        ),
-                      ),
-                      ConstrainedBox(
-                        constraints: BoxConstraints(
-                          maxHeight: 178,
-                          maxWidth: 142,
-                        ),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            const SelectableText(
-                              'Account',
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 14,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                            const SizedBox(height: 24),
-                            ...account
-                                .map(
-                                  (text) => MouseHoverDetectableText(
-                                    text,
-                                    OnEnterMode.underline,
-                                  ),
-                                )
-                                .toList(),
-                            const SizedBox(width: double.infinity),
-                          ],
-                        ),
-                      ),
-                      ConstrainedBox(
-                        constraints: BoxConstraints(
-                          maxHeight: 178,
-                          maxWidth: 142,
-                        ),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            const SelectableText(
-                              'Social',
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 14,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                            const SizedBox(height: 24),
-                            ...social
-                                .map(
-                                  (text) => MouseHoverDetectableText(
-                                    text,
-                                    OnEnterMode.underline,
-                                  ),
-                                )
-                                .toList(),
-                            const SizedBox(width: double.infinity),
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
-                )
-              : Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+          () {
+            if (size.width > 700) {
+              return ConstrainedBox(
+                constraints: BoxConstraints(
+                  maxHeight: 178,
+                  maxWidth: double.infinity,
+                ),
+                child: Row(
                   children: [
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: const [
-                        const SelectableText(
-                          'Run It Once',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 17,
-                            fontWeight: FontWeight.bold,
+                    Expanded(
+                      flex: 5,
+                      child: Row(
+                        children: [
+                          const SizedBox(width: 50),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: const [
+                              const SelectableText(
+                                'Run It Once',
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 17,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              const Text(
+                                '2021 Runt It Once. All rights reserved.',
+                                style: TextStyle(
+                                  color: Colors.grey,
+                                  fontSize: 11.5,
+                                ),
+                              ),
+                            ],
                           ),
-                        ),
-                        const Text(
-                          '2021 Runt It Once. All rights reserved.',
-                          style: TextStyle(
-                            color: Colors.grey,
-                            fontSize: 11.5,
-                          ),
-                        ),
-                        const SizedBox(height: 10),
-                      ],
+                        ],
+                      ),
                     ),
                     ConstrainedBox(
                       constraints: BoxConstraints(
-                        maxHeight: 140,
+                        maxHeight: 178,
                         maxWidth: 142,
                       ),
                       child: Column(
@@ -330,12 +401,12 @@ class CommonComponent {
                               fontWeight: FontWeight.bold,
                             ),
                           ),
-                          const SizedBox(height: 12),
+                          const SizedBox(height: 24),
                           ...about
                               .map(
                                 (text) => MouseHoverDetectableText(
-                                  text,
-                                  OnEnterMode.underline,
+                                  text: text,
+                                  mode: OnEnterMode.underline,
                                 ),
                               )
                               .toList(),
@@ -345,7 +416,7 @@ class CommonComponent {
                     ),
                     ConstrainedBox(
                       constraints: BoxConstraints(
-                        maxHeight: 170,
+                        maxHeight: 178,
                         maxWidth: 142,
                       ),
                       child: Column(
@@ -359,12 +430,12 @@ class CommonComponent {
                               fontWeight: FontWeight.bold,
                             ),
                           ),
-                          const SizedBox(height: 12),
+                          const SizedBox(height: 24),
                           ...account
                               .map(
                                 (text) => MouseHoverDetectableText(
-                                  text,
-                                  OnEnterMode.underline,
+                                  text: text,
+                                  mode: OnEnterMode.underline,
                                 ),
                               )
                               .toList(),
@@ -374,7 +445,7 @@ class CommonComponent {
                     ),
                     ConstrainedBox(
                       constraints: BoxConstraints(
-                        maxHeight: 150,
+                        maxHeight: 178,
                         maxWidth: 142,
                       ),
                       child: Column(
@@ -388,12 +459,12 @@ class CommonComponent {
                               fontWeight: FontWeight.bold,
                             ),
                           ),
-                          const SizedBox(height: 12),
+                          const SizedBox(height: 24),
                           ...social
                               .map(
                                 (text) => MouseHoverDetectableText(
-                                  text,
-                                  OnEnterMode.underline,
+                                  text: text,
+                                  mode: OnEnterMode.underline,
                                 ),
                               )
                               .toList(),
@@ -403,6 +474,125 @@ class CommonComponent {
                     ),
                   ],
                 ),
+              );
+            } else if (size.width <= 700 && size.width > 150) {
+              return Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: const [
+                      const SelectableText(
+                        'Run It Once',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 17,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      const Text(
+                        '2021 Runt It Once. All rights reserved.',
+                        style: TextStyle(
+                          color: Colors.grey,
+                          fontSize: 11.5,
+                        ),
+                      ),
+                      const SizedBox(height: 10),
+                    ],
+                  ),
+                  ConstrainedBox(
+                    constraints: BoxConstraints(
+                      maxHeight: 140,
+                      maxWidth: 142,
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const SelectableText(
+                          'About',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 14,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        const SizedBox(height: 12),
+                        ...about
+                            .map(
+                              (text) => MouseHoverDetectableText(
+                                text: text,
+                                mode: OnEnterMode.underline,
+                              ),
+                            )
+                            .toList(),
+                        const SizedBox(width: double.infinity),
+                      ],
+                    ),
+                  ),
+                  ConstrainedBox(
+                    constraints: BoxConstraints(
+                      maxHeight: 170,
+                      maxWidth: 142,
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const SelectableText(
+                          'Account',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 14,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        const SizedBox(height: 12),
+                        ...account
+                            .map(
+                              (text) => MouseHoverDetectableText(
+                                text: text,
+                                mode: OnEnterMode.underline,
+                              ),
+                            )
+                            .toList(),
+                        const SizedBox(width: double.infinity),
+                      ],
+                    ),
+                  ),
+                  ConstrainedBox(
+                    constraints: BoxConstraints(
+                      maxHeight: 150,
+                      maxWidth: 142,
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const SelectableText(
+                          'Social',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 14,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        const SizedBox(height: 12),
+                        ...social
+                            .map(
+                              (text) => MouseHoverDetectableText(
+                                text: text,
+                                mode: OnEnterMode.underline,
+                              ),
+                            )
+                            .toList(),
+                        const SizedBox(width: double.infinity),
+                      ],
+                    ),
+                  ),
+                ],
+              );
+            } else {
+              return const SizedBox(height: 460);
+            }
+          }(),
           SizedBox(height: size.width > 700 ? 66 : 5),
         ],
       ),

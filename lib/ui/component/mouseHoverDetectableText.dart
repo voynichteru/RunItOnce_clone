@@ -8,9 +8,9 @@ enum OnEnterMode {
 }
 
 class MouseHoverDetectableText extends HookWidget {
-  const MouseHoverDetectableText(
-    this.text,
-    this.mode, {
+  const MouseHoverDetectableText({
+    required this.text,
+    required this.mode,
     Color? defaultTextColor,
     double? defaultFontSize,
     this.defaultFontWeight,
@@ -55,6 +55,7 @@ class MouseHoverDetectableText extends HookWidget {
               fontSize: defaultFontSize,
               fontWeight: defaultFontWeight,
             ),
+            overflow: TextOverflow.ellipsis,
           ),
         ),
         onTap: () {},
