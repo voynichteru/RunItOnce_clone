@@ -39,160 +39,206 @@ class CommonComponent {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Color(0xFF0E1217),
-        title: Row(
-          children: [
-            Expanded(
-              child: Row(
-                children: [
-                  ConstrainedBox(
-                    constraints: BoxConstraints(
-                      maxHeight: 30,
-                      maxWidth: 30,
+        title: size.width < 405
+            ? SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Row(
+                  mainAxisAlignment: size.width > 345
+                      ? MainAxisAlignment.start
+                      : MainAxisAlignment.spaceBetween,
+                  children: [
+                    Row(
+                      children: [
+                        ConstrainedBox(
+                          constraints: BoxConstraints(
+                            maxHeight: 25,
+                            maxWidth: 25,
+                          ),
+                          child: Image.asset('images/rio_logo.jpg'),
+                        ),
+                        Text(
+                          'Run It Once',
+                          style: TextStyle(
+                            fontSize: 13,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ],
                     ),
-                    child: Image.asset('images/rio_logo.jpg'),
-                  ),
-                  Text(
-                    'Run It Once',
-                    style: TextStyle(
-                      fontSize: 14,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  if (size.width > 845) ...[
-                    if (size.width > 1030) ...[
-                      SizedBox(
-                        height: 30,
-                        width: 50,
-                        child: VerticalDivider(
-                          thickness: 1,
-                          width: 50,
-                          color: Colors.grey,
+                    if (size.width > 345)
+                      Padding(
+                        padding: EdgeInsets.only(left: 5, right: 5),
+                        child: MouseHoverDetectableText(
+                          text: 'LOG IN',
+                          mode: OnEnterMode.textColor,
+                          defaultFontSize: 12,
+                          defaultFontWeight: FontWeight.bold,
                         ),
                       ),
-                      Text(
-                        'Training',
-                        style: TextStyle(
-                          fontSize: 18,
+                    if (size.width <= 345) const SizedBox(width: 40),
+                    ElevatedButton(
+                      child: Text(size.width > 345 ? 'SIGN UP FREE' : 'LOG IN'),
+                      style: ElevatedButton.styleFrom(
+                        textStyle: TextStyle(
+                          fontSize: 12,
                           fontWeight: FontWeight.bold,
                         ),
+                        primary: Colors.red,
+                        onPrimary: Colors.white,
+                        shape: const StadiumBorder(),
                       ),
-                    ],
-                    SizedBox(width: size.width <= 1030 ? 50 : 66),
-                    () {
-                      if (size.width >= 1095 ||
-                          (size.width <= 1030 && size.width >= 910)) {
-                        return Text(
-                          'Pro Videos',
-                          style: TextStyle(
-                            color: Colors.grey,
-                            fontSize: 16,
-                          ),
-                        );
-                      } else /* if (size.width< 1095 && size.width > 1030) */ {
-                        return Text(
-                          'Pro\nVideos',
-                          style: TextStyle(
-                            color: Colors.grey,
-                            fontSize: 16,
-                          ),
-                        );
-                      }
-                    }(),
-                    SizedBox(width: size.width < 960 ? 10 : 20),
-                    Text(
-                      'Courses',
-                      style: TextStyle(
-                        color: Colors.grey,
-                        fontSize: 16,
-                      ),
-                    ),
-                    SizedBox(width: size.width < 960 ? 10 : 20),
-                    Text(
-                      'Vision',
-                      style: TextStyle(
-                        color: Colors.grey,
-                        fontSize: 16,
-                      ),
-                    ),
-                    SizedBox(
-                      height: 30,
-                      width: 50,
-                      child: VerticalDivider(
-                        thickness: 1,
-                        width: size.width < 960 ? 30 : 50,
-                        color: Colors.grey,
-                      ),
-                    ),
-                    Text(
-                      'Forums',
-                      style: TextStyle(
-                        color: Colors.grey,
-                        fontSize: 16,
-                      ),
-                    ),
-                    SizedBox(width: size.width < 960 ? 10 : 20),
-                    Text(
-                      'More',
-                      style: TextStyle(
-                        color: Colors.grey,
-                        fontSize: 16,
-                      ),
+                      onPressed: () {},
                     ),
                   ],
+                ),
+              )
+            : Row(
+                children: [
+                  Expanded(
+                    child: Row(
+                      children: [
+                        ConstrainedBox(
+                          constraints: BoxConstraints(
+                            maxHeight: 30,
+                            maxWidth: 30,
+                          ),
+                          child: Image.asset('images/rio_logo.jpg'),
+                        ),
+                        Text(
+                          'Run It Once',
+                          style: TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        if (size.width > 845) ...[
+                          if (size.width > 1030) ...[
+                            SizedBox(
+                              height: 30,
+                              width: 50,
+                              child: VerticalDivider(
+                                thickness: 1,
+                                width: 50,
+                                color: Colors.grey,
+                              ),
+                            ),
+                            Text(
+                              'Training',
+                              style: TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ],
+                          SizedBox(width: size.width <= 1030 ? 50 : 66),
+                          () {
+                            if (size.width >= 1095 ||
+                                (size.width <= 1030 && size.width >= 910)) {
+                              return Text(
+                                'Pro Videos',
+                                style: TextStyle(
+                                  color: Colors.grey,
+                                  fontSize: 16,
+                                ),
+                              );
+                            } else /* if (size.width< 1095 && size.width > 1030) */ {
+                              return Text(
+                                'Pro\nVideos',
+                                style: TextStyle(
+                                  color: Colors.grey,
+                                  fontSize: 16,
+                                ),
+                              );
+                            }
+                          }(),
+                          SizedBox(width: size.width < 960 ? 10 : 20),
+                          Text(
+                            'Courses',
+                            style: TextStyle(
+                              color: Colors.grey,
+                              fontSize: 16,
+                            ),
+                          ),
+                          SizedBox(width: size.width < 960 ? 10 : 20),
+                          Text(
+                            'Vision',
+                            style: TextStyle(
+                              color: Colors.grey,
+                              fontSize: 16,
+                            ),
+                          ),
+                          SizedBox(
+                            height: 30,
+                            width: 50,
+                            child: VerticalDivider(
+                              thickness: 1,
+                              width: size.width < 960 ? 30 : 50,
+                              color: Colors.grey,
+                            ),
+                          ),
+                          Text(
+                            'Forums',
+                            style: TextStyle(
+                              color: Colors.grey,
+                              fontSize: 16,
+                            ),
+                          ),
+                          SizedBox(width: size.width < 960 ? 10 : 20),
+                          Text(
+                            'More',
+                            style: TextStyle(
+                              color: Colors.grey,
+                              fontSize: 16,
+                            ),
+                          ),
+                        ],
+                      ],
+                    ),
+                  ),
+                  Row(
+                    children: [
+                      if (size.width > 845)
+                        () {
+                          if (size.width >= 1095 ||
+                              (size.width <= 1030 && size.width >= 910)) {
+                            return MouseHoverDetectableText(
+                              text: 'Go to Run It Once Poker',
+                              mode: OnEnterMode.textColor,
+                              defaultFontSize: 14,
+                            );
+                          } else {
+                            return MouseHoverDetectableText(
+                              text: 'Go to Run It Once\nPoker',
+                              mode: OnEnterMode.textColor,
+                              defaultFontSize: 14,
+                            );
+                          }
+                        }(),
+                      SizedBox(width: size.width < 960 ? 10 : 20),
+                      MouseHoverDetectableText(
+                        text: 'LOG IN',
+                        mode: OnEnterMode.textColor,
+                        defaultFontSize: 14,
+                        defaultFontWeight: FontWeight.bold,
+                      ),
+                      SizedBox(width: size.width < 960 ? 10 : 20),
+                      ElevatedButton(
+                        child: const Text('  SIGN UP FREE  '),
+                        style: ElevatedButton.styleFrom(
+                          textStyle: TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.bold,
+                          ),
+                          primary: Colors.red,
+                          onPrimary: Colors.white,
+                          shape: const StadiumBorder(),
+                        ),
+                        onPressed: () {},
+                      ),
+                    ],
+                  )
                 ],
               ),
-            ),
-            Row(
-              children: [
-                if (size.width > 845)
-                  () {
-                    if (size.width >= 1095 ||
-                        (size.width <= 1030 && size.width >= 910)) {
-                      return MouseHoverDetectableText(
-                        text: 'Go to Run It Once Poker',
-                        mode: OnEnterMode.textColor,
-                        defaultFontSize: 14,
-                      );
-                    } else /* if (size.width< 1095 && size.width > 1030) */ {
-                      return MouseHoverDetectableText(
-                        text: 'Go to Run It Once\nPoker',
-                        mode: OnEnterMode.textColor,
-                        defaultFontSize: 14,
-                      );
-                    }
-                  }(),
-                /* MouseHoverDetectableText(
-                  text: size.width < 1095 && size.width > 1030
-                      ? 'Go to Run It Once\nPoker'
-                      : 'Go to Run It Once Poker',
-                  mode: OnEnterMode.textColor,
-                  defaultFontSize: 14,
-                ), */
-                SizedBox(width: size.width < 960 ? 10 : 20),
-                MouseHoverDetectableText(
-                  text: 'LOG IN',
-                  mode: OnEnterMode.textColor,
-                  defaultFontSize: 14,
-                  defaultFontWeight: FontWeight.bold,
-                ),
-                SizedBox(width: size.width < 960 ? 10 : 20),
-                ElevatedButton(
-                  child: const Text('  SIGN UP FREE  '),
-                  style: ElevatedButton.styleFrom(
-                    textStyle: TextStyle(
-                      fontSize: 14,
-                      fontWeight: FontWeight.bold,
-                    ),
-                    primary: Colors.red,
-                    onPrimary: Colors.white,
-                    shape: const StadiumBorder(),
-                  ),
-                  onPressed: () {},
-                ),
-              ],
-            )
-          ],
-        ),
       ),
       body: body,
       drawer: size.width <= 845
