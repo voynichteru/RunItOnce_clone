@@ -30,30 +30,91 @@ class CommonComponent {
                       fontSize: 14,
                       fontWeight: FontWeight.bold,
                     ),
-                  )
+                  ),
+                  SizedBox(
+                    height: 30,
+                    width: 50,
+                    child: VerticalDivider(
+                      thickness: 1,
+                      width: 50,
+                      color: Colors.grey,
+                    ),
+                  ),
+                  Text(
+                    'Training',
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  const SizedBox(width: 66),
+                  Text(
+                    'Pro Videos',
+                    style: TextStyle(
+                      color: Colors.grey,
+                      fontSize: 16,
+                    ),
+                  ),
+                  const SizedBox(width: 20),
+                  Text(
+                    'Courses',
+                    style: TextStyle(
+                      color: Colors.grey,
+                      fontSize: 16,
+                    ),
+                  ),
+                  const SizedBox(width: 20),
+                  Text(
+                    'Vision',
+                    style: TextStyle(
+                      color: Colors.grey,
+                      fontSize: 16,
+                    ),
+                  ),
+                  SizedBox(
+                    height: 30,
+                    width: 50,
+                    child: VerticalDivider(
+                      thickness: 1,
+                      width: 50,
+                      color: Colors.grey,
+                    ),
+                  ),
+                  Text(
+                    'Forums',
+                    style: TextStyle(
+                      color: Colors.grey,
+                      fontSize: 16,
+                    ),
+                  ),
+                  const SizedBox(width: 20),
+                  Text(
+                    'More',
+                    style: TextStyle(
+                      color: Colors.grey,
+                      fontSize: 16,
+                    ),
+                  ),
                 ],
               ),
             ),
             Row(
               children: [
-                Text(
+                MouseHoverDetectableText(
                   'Go to Run It Once Poker',
-                  style: TextStyle(
-                    fontSize: 14,
-                    fontWeight: FontWeight.bold,
-                  ),
+                  OnEnterMode.textColor,
+                  defaultFontSize: 14,
                 ),
                 const SizedBox(width: 20),
-                Text(
+                MouseHoverDetectableText(
                   'LOG IN',
-                  style: TextStyle(
-                    fontSize: 14,
-                    fontWeight: FontWeight.bold,
-                  ),
+                  OnEnterMode.textColor,
+                  defaultFontSize: 14,
+                  defaultFontWeight: FontWeight.bold,
                 ),
                 const SizedBox(width: 20),
                 ElevatedButton(
-                  child: const Text('Button'),
+                  child: const Text('  SIGN UP FREE  '),
                   style: ElevatedButton.styleFrom(
                     textStyle: TextStyle(
                       fontSize: 14,
@@ -157,7 +218,12 @@ class CommonComponent {
                             ),
                             const SizedBox(height: 24),
                             ...about
-                                .map((text) => MouseHoverDetectableText(text))
+                                .map(
+                                  (text) => MouseHoverDetectableText(
+                                    text,
+                                    OnEnterMode.underline,
+                                  ),
+                                )
                                 .toList(),
                             const SizedBox(width: double.infinity),
                           ],
@@ -181,7 +247,12 @@ class CommonComponent {
                             ),
                             const SizedBox(height: 24),
                             ...account
-                                .map((text) => MouseHoverDetectableText(text))
+                                .map(
+                                  (text) => MouseHoverDetectableText(
+                                    text,
+                                    OnEnterMode.underline,
+                                  ),
+                                )
                                 .toList(),
                             const SizedBox(width: double.infinity),
                           ],
@@ -205,7 +276,12 @@ class CommonComponent {
                             ),
                             const SizedBox(height: 24),
                             ...social
-                                .map((text) => MouseHoverDetectableText(text))
+                                .map(
+                                  (text) => MouseHoverDetectableText(
+                                    text,
+                                    OnEnterMode.underline,
+                                  ),
+                                )
                                 .toList(),
                             const SizedBox(width: double.infinity),
                           ],
@@ -256,7 +332,12 @@ class CommonComponent {
                           ),
                           const SizedBox(height: 12),
                           ...about
-                              .map((text) => MouseHoverDetectableText(text))
+                              .map(
+                                (text) => MouseHoverDetectableText(
+                                  text,
+                                  OnEnterMode.underline,
+                                ),
+                              )
                               .toList(),
                           const SizedBox(width: double.infinity),
                         ],
@@ -280,7 +361,12 @@ class CommonComponent {
                           ),
                           const SizedBox(height: 12),
                           ...account
-                              .map((text) => MouseHoverDetectableText(text))
+                              .map(
+                                (text) => MouseHoverDetectableText(
+                                  text,
+                                  OnEnterMode.underline,
+                                ),
+                              )
                               .toList(),
                           const SizedBox(width: double.infinity),
                         ],
@@ -304,7 +390,12 @@ class CommonComponent {
                           ),
                           const SizedBox(height: 12),
                           ...social
-                              .map((text) => MouseHoverDetectableText(text))
+                              .map(
+                                (text) => MouseHoverDetectableText(
+                                  text,
+                                  OnEnterMode.underline,
+                                ),
+                              )
                               .toList(),
                           const SizedBox(width: double.infinity),
                         ],
