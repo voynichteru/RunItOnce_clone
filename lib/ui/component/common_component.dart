@@ -71,6 +71,9 @@ class CommonComponent {
                         child: MouseHoverDetectableText(
                           text: 'LOG IN',
                           mode: OnEnterMode.textColor,
+                          onTap: () {
+                            Navigator.pushNamed(context, '/login');
+                          },
                           defaultFontSize: 12,
                           defaultFontWeight: FontWeight.bold,
                         ),
@@ -87,7 +90,11 @@ class CommonComponent {
                         onPrimary: Colors.white,
                         shape: const StadiumBorder(),
                       ),
-                      onPressed: () {},
+                      onPressed: size.width > 345
+                          ? null
+                          : () {
+                              Navigator.pushNamed(context, '/login');
+                            },
                     ),
                   ],
                 ),
@@ -218,6 +225,9 @@ class CommonComponent {
                       MouseHoverDetectableText(
                         text: 'LOG IN',
                         mode: OnEnterMode.textColor,
+                        onTap: () {
+                          Navigator.pushNamed(context, '/login');
+                        },
                         defaultFontSize: 14,
                         defaultFontWeight: FontWeight.bold,
                       ),

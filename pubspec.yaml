@@ -24,8 +24,11 @@ dependencies:
   cupertino_icons: ^1.0.2
   flutter:
     sdk: flutter
-  # For Architecture
   flutter_hooks: ^0.17.0
+  flutter_web_plugins:
+      sdk: flutter
+  # For Architecture
+  
   hooks_riverpod: ^0.14.0+4
 
 
